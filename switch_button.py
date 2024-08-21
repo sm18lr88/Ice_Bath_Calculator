@@ -11,7 +11,6 @@ class SwitchButton(QCheckBox):
         super().__init__(parent)
 
     def paintEvent(self, event):
-        # Adjust dimensions for a slightly larger toggle switch
         rect_height = int(0.6 * self.rect().height())
         circle_radius = int(0.8 * rect_height)
         rect_width = int(2 * circle_radius)
@@ -51,10 +50,9 @@ class SwitchButton(QCheckBox):
         painter.end()
 
     def mousePressEvent(self, event):
-        self.setChecked(not self.isChecked())  # Corrected boolean negation
+        self.setChecked(not self.isChecked())
         self.clicked.emit(self.isChecked())
         super().mousePressEvent(event)
 
     def sizeHint(self):
-        # Adjust size hint to be a little larger
         return QtCore.QSize(60, 30)
